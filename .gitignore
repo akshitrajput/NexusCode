@@ -1,0 +1,23 @@
+# --- Frontend (Node/React) ---
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.DS_Store
+frontend/coverage/
+
+# --- Backend (Go) ---
+# Binaries
+backend/bin/
+backend/*.exe
+backend/*.test
+backend/main
+
+# Vendor
+backend/vendor/
+backend/.env
+
+# --- General ---
+.vscode/
+.idea/
+.DS_Store
+*.log
