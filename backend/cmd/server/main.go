@@ -3,19 +3,17 @@ package main
 import (
 	"log"
 	"net/http"
-	"nexus-code/backend/internal/ws"
+	"nexus-code/backend/internal/ws" // Ensure this matches your project module path
 )
 
 func main() {
-	hub := ws.NewHub()
-	go hub.Run()
+	// Initialize the centralized Room Manager
+	manager := ws.NewManager()
 
-	// Handle WebSocket requests on the root path "/"
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		ws.ServeWs(hub, w, r)
-	})
+	// Route all WebSocket traffic through the Manager's ServeWS method
+	http.HandleFunc("/", manager.ServeWS)
 
-	log.Println("NexusCode CRDT Server started on :8080")
+	log.Println("NexusCode Multi-Room Server started on :8080")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		log.Fatal("Server failed to start:", err)
