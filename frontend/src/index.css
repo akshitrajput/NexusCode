@@ -63,3 +63,69 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+/* VS Code Style Auto-Hiding Scrollbar for File Tabs */
+.file-tabs-container::-webkit-scrollbar {
+  height: 2px; /* Very thin line */
+}
+
+.file-tabs-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.file-tabs-container::-webkit-scrollbar-thumb {
+  background: transparent; 
+  border-radius: 4px;
+}
+
+/* Only show the grey scrollbar when hovering over the tab bar */
+.file-tabs-container:hover::-webkit-scrollbar-thumb {
+  background: #555; 
+}
+
+/* File Tab & Icon Hover Logic */
+.file-tab {
+  /* We need this class to detect when the parent tab is hovered */
+}
+
+.tab-close-btn {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.15s ease;
+  border-radius: 4px; /* Squarish rounded corner */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+}
+
+/* Show the cross when the tab is hovered */
+.file-tab:hover .tab-close-btn {
+  opacity: 0.6;
+  visibility: visible;
+}
+
+/* Highlight the cross with a background when specifically hovering over the cross */
+.tab-close-btn:hover {
+  opacity: 1 !important;
+  background-color: rgba(255, 255, 255, 0.15); /* Light grey highlight */
+}
+
+/* Add New File Button Hover */
+.add-file-btn {
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin-left: 4px;
+}
+
+.add-file-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff !important;
+}
